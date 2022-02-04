@@ -1,0 +1,26 @@
+A positive integer N is given. The goal is to find the highest power of 2 that divides N. In other words, we have to find the maximum K for which N modulo 2^K is 0.
+
+For example, given integer N = 24 the answer is 3, because 2^3 = 8 is the highest power of 2 that divides N.
+
+Write a function:
+
+def solution(N)
+
+that, given a positive integer N, returns the highest power of 2 that divides N.
+
+For example, given integer N = 24, the function should return 3, as explained above.
+
+Assume that:
+
+N is an integer within the range [1..1,000,000,000].
+
+
+def solution(N):
+    
+    res = []
+    for i in range(30):
+        if N % 2**i == 0:
+            res.append(i)
+    return max(res)
+    
+  Logic: a bit brute force method but effective (passed 100%). Simply verifying if the modulus of a given power of 2 divided into N is 0. If so, add to an array and then return the max value in the array. I hard coded the range to be 30 since 2**30 exceeds a billion. I am going to surf around now and find someone's clever one liner to add here too just so I can see a better approach (with or without numpy)
