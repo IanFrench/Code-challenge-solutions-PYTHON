@@ -24,3 +24,10 @@ def solution(N):
     return max(res)
     
   Logic: a bit brute force method but effective (passed 100%). Simply verifying if the modulus of a given power of 2 divided into N is 0. If so, add to an array and then return the max value in the array. I hard coded the range to be 30 since 2**30 exceeds a billion. I am going to surf around now and find someone's clever one liner to add here too just so I can see a better approach (with or without numpy)
+  
+  ok, got a nice clean one that gave me the value of the highest power of 2 but not the actual power so I modified it to find the power.
+  
+  import math
+  def solution(N):
+
+  return int(math.log2(N & (~(N - 1))))
