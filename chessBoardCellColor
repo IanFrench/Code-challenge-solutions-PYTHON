@@ -1,0 +1,33 @@
+Given two cells on the standard chess board, determine whether they have the same color or not.
+
+Example
+
+For cell1 = "A1" and cell2 = "C3", the output should be
+solution(cell1, cell2) = true.
+
+
+
+For cell1 = "A1" and cell2 = "H3", the output should be
+solution(cell1, cell2) = false.
+
+
+My solution:
+Ok, so looking at a cvherss board we know that the positions will be the same color if the sums of their two locations are both even or both odd. I needed to convert the first character into an ordinal number and then add the two for each cell. I used two for loops with enumerate to accomplish this and then evaluated if they wer both odd or even at the final return statement.
+
+def solution(cell1, cell2):
+    val1 = 0
+    val2 = 0
+    
+    for i, char in enumerate(cell1):
+        if i == 0:
+            val1 = int((ord(char)))
+        else:
+            val1 += int(char)
+    for i, char in enumerate(cell2):
+        if i == 0:
+            val2 = int((ord(char)))
+        else:
+            val2 += int(char)
+             
+    return val1 % 2 == val2 % 2
+    
