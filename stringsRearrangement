@@ -21,3 +21,29 @@ For inputArray = ["ab", "bb", "aa"], the output should be
 solution(inputArray) = true.
 
 It's possible to arrange these strings in a way that each consecutive pair of strings differ by 1 character (eg: "aa", "ab", "bb" or "bb", "ab", "aa"), so return true.
+
+
+Solution:
+
+I tried numerous ways and kept getting a couple of failed test cases. After digging around I figured out that using itertools,permutations was the best approach (at least as far as I could see). Looking at the discussions after submitting it I saw a few similar to mine, and a myraid of other solutions. 
+
+import itertools
+def solution(inputArray):
+    
+    def compare(x,y):
+        count = 0
+        for i in range(len(x)):
+            if x[i] != y[i]:
+                count += 1
+        if count == 1:
+            return True
+        return False
+        
+    for j in itertools.permutations(inputArray, len(inputArray)):
+        res = True
+        for k in range(len(j)-1):
+            if not compare(j[k], j[k+1]):
+                res = False
+        if res:
+            return True
+    return False
