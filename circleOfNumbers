@@ -1,0 +1,28 @@
+Consider integer numbers from 0 to n - 1 written down along the circle in such a way that the distance between any two neighboring numbers is equal (note that 0 and n - 1 are neighboring, too).
+
+Given n and firstNumber, find the number which is written in the radially opposite position to firstNumber.
+
+Example
+
+For n = 10 and firstNumber = 2, the output should be
+solution(n, firstNumber) = 7.
+
+
+
+solution: This one was a simple case of finding the middle number of n ( n was guaranteed to be even) and then assessing where that lay with respect to the first number variable. basically if the midpoint was bigger than the first number you would just add the two together. If equal, then it would result in 0. If greater than, you just subtract the mid from the given number. 
+
+def solution(n, firstNumber):
+    if n / 2 > firstNumber:
+        return firstNumber + n/2
+    if n / 2 == firstNumber:
+        return 0
+    else:
+        return firstNumber - n/2
+        
+        
+  Alternate found in comments:
+  
+  def solution(n, firstNumber):
+     return (firstNumber + n/2)%n
+     
+     ok so that works too, add the two values, mid and first, and then just divide by n using modulus to get remainder. 
