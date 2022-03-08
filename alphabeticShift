@@ -1,0 +1,22 @@
+Given a string, your task is to replace each of its characters by the next one in the English alphabet; i.e. replace a with b, replace b with c, etc (z would be replaced by a).
+
+Example
+
+For inputString = "crazy", the output should be solution(inputString) = "dsbaz".
+
+
+def solution(inputString):
+    return ''.join([chr(ord(x)+1) if x != 'z' else 'a' for x in inputString])
+    
+    
+    # first attempt above I had failed to add the x ! = z section in the correct syntax and failed on any of those values. I was putting the if statement after the for x in which threw it off. I created the following code to first solve and then came back to try again. It effectively accomplishes the same as the one liner above. 
+    
+    res = ""
+    for i, char in enumerate(inputString):
+        if char == 'z':
+           char = chr(ord(char)-25)
+           res += char
+        else: 
+            char = chr(ord(char)+1)
+            res += char
+    return res
