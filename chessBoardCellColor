@@ -31,3 +31,7 @@ def solution(cell1, cell2):
              
     return val1 % 2 == val2 % 2
     
+
+
+Other solution:
+ looking at it again I can see how to simplify further since the only case where they can match is if all values added are even ( i.e. both cell1 and cell 2 are odd or both are even) so I could have just gone with something like this return (ord(cell1[0])+int(cell1[1])+ord(cell2[0])+int(cell2[1]))%2==0  and saved a bunch of typing.
