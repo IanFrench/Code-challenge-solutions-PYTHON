@@ -17,3 +17,29 @@ the function should return [9, 7, 6, 3, 8]. Three rotations were made:
     [3, 8, 9, 7, 6] -> [6, 3, 8, 9, 7]
     [6, 3, 8, 9, 7] -> [7, 6, 3, 8, 9]
     [7, 6, 3, 8, 9] -> [9, 7, 6, 3, 8]
+    
+    
+    My solution:
+    
+    def solution(A, K):
+
+    # first verify inputs meet given parameters
+    
+    if len(A) not in range(1,101):
+        return A
+    if int(K) not in range (0, 101):
+        return A
+    # next create second 'empty' array of same size as A
+
+    size = len(A)
+    res = [0] * size
+    
+    # populate new array with the values of A shifted accordingly. This is done by taking the value of A[i] at it's current place in the for loop and then determining its position in the new array based on adding K to i and then using modulus to divide by the size of A. An example of how this works. Given A has 10 elements, i.e. size = 10 and for a K value of 4. Looking at the first and last elements which is index 0 and 9, we'd expect the new positions to be at index 4 and 3 respectively so let's do the math to see if correct.   (0+4) % 10 = 4 ,  and (9 + 4) % 10 = 3 so both check out. 
+
+    for i in range(0,size):
+        res[((i+K) % size)] = A[i]
+
+    return res
+
+   # and so it works!
+    
