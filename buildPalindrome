@@ -1,0 +1,19 @@
+Given a string, find the shortest possible string which can be achieved by adding characters to the end of initial string to make it a palindrome.
+
+Example
+
+For st = "abcdc", the output should be
+solution(st) = "abcdcba".
+
+
+
+My solution:  I initially was thinking to use a two pointer method but that got messy. Then I realized it made sense to compare the given string to its reversed state and if they did not match I'd add the front character using insert at the end of the string. Had to convert to a list first so that it could be handled properly. Using a single pointer I'd traverse the list char by char until the two string matched. Then it was just join and return.
+
+def solution(st):
+    front = 0
+    res = list(st)
+    while res != res[::-1]:
+        res.insert(len(st), st[front])
+        front +=1
+    res = ''.join(res)
+    return res
