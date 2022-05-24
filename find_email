@@ -1,0 +1,25 @@
+An email address such as "John.Smith@example.com" is made up of a local part ("John.Smith"), an "@" symbol, then a domain part ("example.com").
+
+The domain name part of an email address may only consist of letters, digits, hyphens and dots. The local part, however, also allows a lot of different special characters. Here you can look at several examples of correct and incorrect email addresses.
+
+Given a valid email address, find its domain part.
+
+
+Solution:
+MY initial solution was to simply iterate through the list, find the @ and return everything after. I had a failure however due to the presence of a string the had two such characters. Therefore I thought to reverese the string since I was only looking for everything after the last one. I created res variable for that and then using enumerate found the character I wanted. From there I just needed to take into account the actual location in the original string which meant subtracting i from the overall length and returning everthing past that point. 
+
+def solution(address):
+    
+    res = reversed(address)
+    
+    for i, char in enumerate(res):
+        if char != '@':
+            continue
+        else:
+            return(address[(len(address) - i):])
+            
+            
+            
+    This was someone else's nice one-liner  for the same problem.
+        
+        return address.split('@')[-1]
