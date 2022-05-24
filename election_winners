@@ -1,0 +1,25 @@
+Elections are in progress!
+
+Given an array of the numbers of votes given to each of the candidates so far, and an integer k equal to the number of voters who haven't cast their vote yet, find the number of candidates who still have a chance to win the election.
+
+The winner of the election must secure strictly more votes than any other candidate. If two or more candidates receive the same (maximum) number of votes, assume there is no winner at all.
+
+Example
+
+For votes = [2, 3, 5, 2] and k = 3, the output should be
+solution(votes, k) = 2.
+
+UPER:
+Basically I wanted to determine via an iteration if adding the value of k would result in any of the digits being the max for the array. I first set up a current max value for the unedited array. Then created a counter. My first test was for a value of k=0. If so, and the count of the cuyrrent max was 1, then it was obvious there was 1 winner. The second was to simply iterate through and check each value +=k to see if it exceeded the current max. If so the counter increased for each occurence. 
+
+solution
+def solution(votes, k):
+    curr_max = max(votes)
+    count = 0
+    if k == 0 and votes.count(curr_max) == 1:
+        return 1
+    for i in votes:
+        if i + k > curr_max:
+            count +=1
+        
+    return count
