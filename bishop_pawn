@@ -28,3 +28,10 @@ def solution(bishop, pawn):
 
     return (abs((b[0]) - p[0]) == abs((b[1]) - p[1]))
     
+
+Someone else had condensed this to a single return like so:
+
+def solution(bishop, pawn):
+    return abs(ord(bishop[0])-ord(pawn[0]))==abs(int(pawn[1])-int(bishop[1]))
+    
+    which in retrospect I saw that I needn't have used -96 to get the first value as it didn't make a difference. Aesthetically for me though I liked it better though as it helped me visualize the grid better. 
