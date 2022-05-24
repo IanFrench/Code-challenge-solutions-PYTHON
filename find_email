@@ -23,3 +23,6 @@ def solution(address):
     This was someone else's nice one-liner  for the same problem.
         
         return address.split('@')[-1]
+        
+     I should add why this works. Takes the given string and splits it into pieces at each @ location and just returns the final piece which is the -1.
+     Much cleaner 
