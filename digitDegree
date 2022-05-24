@@ -15,7 +15,7 @@ solution(n) = 2.
 
 
 
-My solution: Simple while loop that will break n into individual digits, sum them and assign as new n until n gets to a single digit. Uses a var degree as counter 
+My solution: Simple while loop that will break n into individual digits using list comprehension, sum the new list and assign as new n until n gets to a single digit. Uses a var degree as counter 
 
 def solution(n):
     
