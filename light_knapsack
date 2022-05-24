@@ -55,3 +55,4 @@ To fix that I'd have to have written it like so:
        def solution(v1, w1, v2, w2, W):
     return max(int(w1<=W)*v1, int(w2<=W)*v2, int(w1+w2<=W)*(v1+v2))
        
+       Which is brialliant. It basically determines the max of the three conditions as a they can be evaluated to a binary 0 false or 1 true for the weights and multiplies by the value. 
