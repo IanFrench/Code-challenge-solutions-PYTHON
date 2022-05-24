@@ -1,0 +1,57 @@
+You found two items in a treasure chest! The first item weighs weight1 and is worth value1, and the second item weighs weight2 and is worth value2. What is the total maximum value of the items you can take with you, assuming that your max weight capacity is maxW and you can't come back for the items later?
+
+Note that there are only two items and you can't bring more than one item of each type, i.e. you can't take two first items or two second items.
+
+
+Solution: Figured I'd tackle this with a few if statements. First see if both items combined are less than max return sum of the values. NExt see if the second weight <= max and if the value of it is more than 1 we return value2. Next if sees if weight 1 is <= max we return value 1. Finally default to 0 since if everything is greater than max we get nothing.
+
+
+def solution(value1, weight1, value2, weight2, maxW):
+    
+    if not weight1 + weight2 > maxW:
+        return value1 + value2
+    elif weight2 <= maxW and value2 > value1:
+        return value2
+    elif weight1 <= maxW:   
+        return value1
+    else:
+        return 0
+        
+        
+
+Initially I had put the2nd and 3rd ifs like so:
+    elif weight1 <= maxW and value1 > value2:
+        return value1
+    elif weight2 <= maxW:   
+        return value2
+        
+        
+But this failed the following test for reason explained below. 
+
+Input:
+value1: 15
+weight1: 2
+value2: 20
+weight2: 3
+maxW: 2
+Output:
+0
+Expected Output:
+15
+
+We pass over first if statement, Then we hit the second if. Here we see that yes the weight is under but value 1 is not more than 2 so we don't return anything and move on. Next statement if false because weight 2 is too heavy and thus we go to the else which return 0, BUT we could have taken item 1 with the value of 15. 
+
+
+To fix that I'd have to have written it like so:
+
+   elif weight1 <= maxW and weight2 > maxW or weight1 <= maxW and value1 >= value2:
+        return value1
+    elif weight2 <= maxW and value2 > value1:   
+        return value2
+        
+       Which is a lot uglier than my solution above. 
+       And now, of course someone elses's more elegant solution:
+       
+       def solution(v1, w1, v2, w2, W):
+    return max(int(w1<=W)*v1, int(w2<=W)*v2, int(w1+w2<=W)*(v1+v2))
+       
