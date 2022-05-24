@@ -1,0 +1,27 @@
+Given a string, output its longest prefix which contains only digits.
+
+Example
+
+For inputString = "123aa1", the output should be
+solution(inputString) = "123".
+
+
+
+Solution:
+Create an empty list, res. Iterate through the string and if the value is a digit append to res. If not, break iteration. Then use list comprehension combined with the ''.join() in Pyhton  to return the number value as a string. 
+
+def solution(inputString):
+    res = []
+  
+    for i in inputString:
+        if i.isdigit():
+            res.append(i)
+        else:
+            break
+    return ''.join([str(x) for x in res])
+
+
+
+Someone had posted this as a solution using  the "re" capabilities of Oythion but I am not well versed in that yet. Something to read up on.
+def solution(inputString):
+    return re.findall('^\d*',inputString)[0]
