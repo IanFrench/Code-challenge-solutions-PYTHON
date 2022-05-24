@@ -1,0 +1,27 @@
+A media access control address (MAC address) is a unique identifier assigned to network interfaces for communications on the physical network segment.
+
+The standard (IEEE 802) format for printing MAC-48 addresses in human-friendly form is six groups of two hexadecimal digits (0 to 9 or A to F), separated by hyphens (e.g. 01-23-45-67-89-AB).
+
+Your task is to check by given string inputString whether it corresponds to MAC-48 address or not.
+
+
+my solution:
+
+The logic I used was to first rule out any strings that were not exactly 17 characters in length as that was automatically a fail. Then I wanted to make sure that the dashes were placed in their correct location. Using a for loop to iterate was the most logical. Because dashes started on the third character and was located every three after I wanted to use the modulus but seeing as the value's were zero indexed I needed to modify slightly and have the remainder be equal to 2. Then it was a simple check to see if the character was a digit or one of the characters in allowable which I'd initialized earlier. If neither it returned False. Otherwise it was a valid MAC address. 
+
+
+
+def solution(inputString):
+
+    allowable='ABCDEF'
+    size = len(inputString)
+    if size!=17:
+        return False
+    for i in range(size):
+        if i % 3==2:
+            if inputString[i]!='-':
+                return False
+        else:
+            if inputString[i].isdigit()==False and inputString[i] not in allowable:
+                return False
+    return True
